@@ -6,6 +6,8 @@ from storage.credentials import CatApiUser
 
 def get_favorities_images(auth):
     return send_request("GET",CatsApi.FAVORITIES_URL,headers=auth)
+def get_favorities_image_by_id(image_id, auth):
+    return send_request("GET",f"{CatsApi.FAVORITIES_URL}/{image_id}",headers=auth)
 
 def delete_image_from_favorities(image_id,auth):
     return send_request("DELETE", f"{CatsApi.FAVORITIES_URL}/{image_id}",headers=auth)

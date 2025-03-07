@@ -1,0 +1,19 @@
+# Allure results (reporting)
+**/allure-results/
+
+# Python cache
+**/__pycache__/
+
+# Pytest cache
+**/.pytest_cache/
+
+# ENV files
+.env
+/venv/
+
+# IDE files
+.idea/
+
+# Other files
+.DS_Store
+.cache

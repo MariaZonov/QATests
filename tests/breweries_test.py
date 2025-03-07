@@ -15,3 +15,10 @@ def test_get_breweries_by_per_page(breweries_count):
     assert response.status_code == 200, "Код ответа равен 200"
     assert len(response.json()) == breweries_count, "Количество не равно ожидаемому"
 
+@pytest.mark.parametrize("page, breweries_count", [(15, 1),(3, 2)])
+def test_get_breweries_page_by_per_page(page, breweries_count):
+    print(BreweriesURLS.URL_PAGE_BREWERIES.format(page, breweries_count))
+    response = send_request("GET", BreweriesURLS.URL_PAGE_BREWERIES.format(page, breweries_count))
+    print(response.json())
+    assert response.status_code == 200, "Код ответа равен 200"
+#    assert len(response.json()) == (page, breweries_count), "Страница, Количество равно ожидаемому"

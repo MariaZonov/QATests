@@ -12,7 +12,7 @@ from clients.rest.cats_api.favorities import (
 @allure.feature("DELETE /v1/favourites/:favourite_id")
 class TestFavorities:
     @allure.title("Удаление картинки в favorities")
-    def test_deleting_image_from_favorities(cats_api_auth):
+    def test_deleting_image_from_favorities(self, cats_api_auth):
         with allure.step("Шаг: Получение всех картинок, которые пока не добавлены в favorities"):
             images = get_images().json()
         with allure.step("Шаг: Присваивание image_id для конкретной картинки"):

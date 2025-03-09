@@ -11,7 +11,7 @@ from clients.rest.cats_api.favorities import (
 @allure.feature("GET /v1/favourites/:favourite_id")
 class TestFavorities:
     @allure.title("Получает картинку в favorities")
-    def test_get_image_from_favorities_by_id(cats_api_auth):
+    def test_get_image_from_favorities_by_id(self, cats_api_auth):
         with allure.step("Шаг: Получение всех картинок, которые пока не добавлены в favorities"):
             images = get_images().json()
         with allure.step("Шаг: Присваивание image_id для конкретной картинки"):

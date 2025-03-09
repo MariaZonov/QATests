@@ -11,7 +11,7 @@ from clients.rest.cats_api.favorities import (
 @allure.feature("POST /v1/favourites")
 class TestFavorities:
     @allure.title("Добавление картинки в favorities")
-    def test_adding_image_to_favorities(cats_api_auth):
+    def test_adding_image_to_favorities(self, cats_api_auth):
         with allure.step("Шаг: Удаление всех картинок в favotities"):
             delete_all_images_from_favorities(cats_api_auth)
         with allure.step("Шаг: Получение всех картинок, которые пока не добавлены в favorities"):

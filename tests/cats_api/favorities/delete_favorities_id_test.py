@@ -3,26 +3,25 @@ import allure
 from clients.rest.cats_api.favorities import (
     get_images,
     get_image_id,
-    add_image_to_favorities,
-    check_image_in_favorities,
-    delete_all_images_from_favorities,
-    delete_image_from_favorities)
+    add_image_to_favorites,
+    check_image_in_favorites,
+    delete_image_from_favorites
+)
 
-@pytest.mark.favorities
-@allure.feature("DELETE /v1/favourites/:favourite_id")
-class TestFavorities:
-    @allure.title("Удаление картинки в favorities")
-    def test_deleting_image_from_favorities(self, cats_api_auth):
-        with allure.step("Шаг: Получение всех картинок, которые пока не добавлены в favorities"):
+
+@pytest.mark.cats_favorities
+@allure.feature("DELETE /v1/favourites/favourite_id")
+class TestFavorites:
+    @allure.title("Удаление картинки из списка favorites")
+    def test_delete_image_from_favorites(self, cats_api_auth):
+        with allure.step("Шаг: Получение всех картинок, которые пока не добавлены в favorites"):
             images = get_images().json()
         with allure.step("Шаг: Присваивание image_id для конкретной картинки"):
             image_id = get_image_id(images=images)
-        with allure.step("Шаг: Добавление этой картинки в favorities"):
-            add_image_to_favorities(image_id, cats_api_auth)
-        with allure.step("Шаг: Удаление этой картинки в favorities"):
-            delete_image_from_favorities(image_id, cats_api_auth)
-
-        with allure.step("Шаг:  Проверка об удалении этой картинки в favorities"):
-            check = check_image_in_favorities(image_id, cats_api_auth)
+        with allure.step(f"Шаг: Добавление картинки c image_id = {image_id} в favorites"):
+            add_image_to_favorites(image_id, cats_api_auth)
+        with allure.step("Шаг: Удаление картинки из списка favourites"):
+            delete_image_from_favorites(image_id, cats_api_auth)
+        with allure.step(f"Проверка: Картинка c image_id = {image_id} удалена из favorites"):
+            check = check_image_in_favorites(image_id, cats_api_auth)
             assert not check, f"Картинка {image_id} не удалена из избранного"
-

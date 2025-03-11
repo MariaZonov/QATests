@@ -7,9 +7,9 @@ def get_favorite_images(auth):
     return send_request("GET", CatsApiUrls.FAVORITIES_URL, headers=auth)
 
 
-def get_favorite_image_by_id(image_id, auth):
+def get_favorite_image_by_id(favorite_id, auth):
     """Отправляет GET-запрос на получение избранной картинки по ID"""
-    return send_request("GET",f"{CatsApiUrls.FAVORITIES_URL}/{image_id}", headers=auth)
+    return send_request("GET",f"{CatsApiUrls.FAVORITIES_URL}/{favorite_id}", headers=auth)
 
 
 def delete_image_from_favorites(image_id,auth):

@@ -20,8 +20,8 @@ class TestFavorites:
         with allure.step(f"Шаг: Добавление картинки c image_id = {image_id} в favorites"):
             response = add_image_to_favorites(image_id, cats_api_auth)
         with allure.step("Шаг: Сохранение в favorite_id"):
-            favorite_id = response.json()['id']
+            favorite_id = response.json()["id"]
         with allure.step(f"Шаг: Запрос данных картинки c image_id = {image_id}"):
             response = get_favorite_image_by_id(favorite_id, cats_api_auth)
         with allure.step("Проверка: Код ответа равен 200"):
-            assert response.status_code == 200, "Код ответа не равен 200"
+            assert response.status_code == 200, "Код ответа не равен коду 200"

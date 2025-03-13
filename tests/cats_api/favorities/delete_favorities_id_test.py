@@ -19,9 +19,11 @@ class TestFavorites:
         with allure.step("Шаг: Присваивание image_id для конкретной картинки"):
             image_id = get_image_id(images=images)
         with allure.step(f"Шаг: Добавление картинки c image_id = {image_id} в favorites"):
-            add_image_to_favorites(image_id, cats_api_auth)
+            response = add_image_to_favorites(image_id, cats_api_auth)
+        with allure.step("Шаг: Сохранение в favorite_id"):
+            favorite_id = response.json()['id']
         with allure.step("Шаг: Удаление картинки из списка favourites"):
-            delete_image_from_favorites(image_id, cats_api_auth)
+            delete_image_from_favorites(favorite_id, cats_api_auth)
         with allure.step(f"Проверка: Картинка c image_id = {image_id} удалена из favorites"):
             check = check_image_in_favorites(image_id, cats_api_auth)
             assert not check, f"Картинка {image_id} не удалена из избранного"

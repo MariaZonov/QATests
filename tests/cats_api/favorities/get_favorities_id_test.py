@@ -24,4 +24,4 @@ class TestFavorites:
         with allure.step(f"Шаг: Запрос данных картинки c image_id = {image_id}"):
             response = get_favorite_image_by_id(favorite_id, cats_api_auth)
         with allure.step("Проверка: Код ответа равен 200"):
-            assert response.status_code == 200, "Код ответа не равен 200."
+            assert response.status_code == 200, "Код ответа не равен 200"
